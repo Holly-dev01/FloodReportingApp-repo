@@ -1,5 +1,7 @@
 package com.example.floodreportingapp;
 
+import static androidx.core.content.ContextCompat.startActivity;
+import android.content.Intent;
 import com.example.floodreportingapp.api.ApiClient;
 import com.example.floodreportingapp.api.ApiService;
 import com.example.floodreportingapp.model.FloodReportDTO;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         requestLocationPermission();
+        checkAuthentication();
     }
 
     private void initializeViews() {
@@ -161,6 +164,15 @@ private void getCurrentLocation() {
             }
         });
     }
+
+    private void checkAuthentication() {
+       if (!prefsHelper.isLoggedIn()) {
+         Intent intent = new Intent(this, LoginActivity.class);
+         startActivity(intent);
+         finish();
+       }
+    }
+
 
     private void clearForm() {
         etDescription.setText("");
