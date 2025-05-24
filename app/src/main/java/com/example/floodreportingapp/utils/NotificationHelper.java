@@ -1,6 +1,10 @@
 package com.example.floodreportingapp.utils;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
+import android.os.Build;
+
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import com.example.floodreportingapp.R;
@@ -22,5 +26,17 @@ public class NotificationHelper {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         notificationManager.notify(1, builder.build());
+    }
+
+    public void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(
+                    "channel_id",
+                    "Flood Reports",
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+            NotificationManager manager = context.getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
     }
 }
