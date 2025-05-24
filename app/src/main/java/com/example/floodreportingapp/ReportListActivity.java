@@ -1,5 +1,7 @@
 package com.example.floodreportingapp;
 
+import static com.example.floodreportingapp.api.ApiClient.apiService;
+
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -9,6 +11,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.floodreportingapp.model.FloodReportDTO;
+
+import java.util.List;
+
+import retrofit2.Call;
 
 public class ReportListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -23,8 +31,12 @@ public class ReportListActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    swipeRefreshLayout.setOnRefreshListener(() -> {
-        loadReports();
-        swipeRefreshLayout.setRefreshing(false);
-    });
+    private void loadReports(String filter) {
+        Call<List<FloodReportDTO>> call;
+        if (filter.equals("flood")) {
+            call = apiService.getReportsByType("flood");
+        } else {
+            call = apiService.getAllReports();
+        }
+    }
 }
