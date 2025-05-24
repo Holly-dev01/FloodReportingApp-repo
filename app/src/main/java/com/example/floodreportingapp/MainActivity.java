@@ -1,5 +1,10 @@
 package com.example.floodreportingapp;
 
+import com.example.floodreportingapp.api.ApiClient;
+import com.example.floodreportingapp.api.ApiService;
+import com.example.floodreportingapp.model.FloodReportDTO;
+import com.example.floodreportingapp.utils.SharedPreferencesHelper;
+
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
@@ -21,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSubmitReport;
 
     private FusedLocationProviderClient fusedLocationClient;
+    private SharedPreferencesHelper prefsHelper;
+    private ApiService apiService;
 
     private double currentLatitude = 0.0;
     private double currentLongitude = 0.0;
@@ -29,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        requestLocationPermission();
     }
 
     private void initializeViews() {
@@ -38,9 +47,10 @@ public class MainActivity extends AppCompatActivity {
         btnSubmitReport = findViewById(R.id.btnSubmitReport);
     }
 
-    fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-    requestLocationPermission();
-}
+    private void initializeServices() {
+        prefsHelper = new SharedPreferencesHelper(this);
+        apiService = ApiClient.getApiService();
+    }
 
 private void requestLocationPermission() {
     if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
