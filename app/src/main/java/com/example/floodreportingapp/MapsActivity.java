@@ -1,5 +1,6 @@
 package com.example.floodreportingapp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.FragmentActivity;
@@ -11,6 +12,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -59,5 +61,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             case "medium": return BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
             default: return BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
         }
+    }
+
+    private void addSeverityCircle(LatLng position, String severity) {
+        int radius = severity.equals("high") ? 1000 : 500;
+        int color = severity.equals("high") ? Color.RED : Color.YELLOW;
+
+        mMap.addCircle(new CircleOptions()
+                .center(position)
+                .radius(radius)
+                .strokeColor(color)
+                .fillColor(Color.argb(70, Color.red(color), Color.green(color), Color.blue(color))));
     }
 }
