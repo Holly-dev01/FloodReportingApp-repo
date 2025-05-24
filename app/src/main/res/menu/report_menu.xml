@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/filter_all" android:title="All" />
+    <item android:id="@+id/filter_flood" android:title="Floods" />
+    <item android:id="@+id/filter_blocked_road" android:title="Blocked Roads" />
+</menu>
