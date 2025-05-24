@@ -22,4 +22,9 @@ public class ReportListActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+    swipeRefreshLayout.setOnRefreshListener(() -> {
+        loadReports();
+        swipeRefreshLayout.setRefreshing(false);
+    });
 }
