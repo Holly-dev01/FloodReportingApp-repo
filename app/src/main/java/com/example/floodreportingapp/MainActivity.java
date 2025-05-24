@@ -10,9 +10,16 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 public class MainActivity extends AppCompatActivity {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
+    private EditText etDescription;
+    private Spinner spinnerType, spinnerSeverity;
+    private Button btnSubmitReport;
+
     private FusedLocationProviderClient fusedLocationClient;
 
     private double currentLatitude = 0.0;
@@ -22,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    private void initializeViews() {
+        etDescription = findViewById(R.id.etDescription);
+        spinnerType = findViewById(R.id.spinnerType);
+        spinnerSeverity = findViewById(R.id.spinnerSeverity);
+        btnSubmitReport = findViewById(R.id.btnSubmitReport);
     }
 
     fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
