@@ -4,6 +4,7 @@ import com.example.floodreportingapp.api.ApiClient;
 import com.example.floodreportingapp.api.ApiService;
 import com.example.floodreportingapp.model.FloodReportDTO;
 import com.example.floodreportingapp.utils.SharedPreferencesHelper;
+import com.example.floodreportingapp.utils.NotificationHelper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
@@ -138,6 +139,18 @@ private void getCurrentLocation() {
                 } else {
                     Toast.makeText(MainActivity.this, "Failed to submit report", Toast.LENGTH_SHORT).show();
                 }
+
+                call.enqueue(new Callback<FloodReportDTO>() {
+                    @Override
+                    public void onResponse(Call<FloodReportDTO> call, Response<FloodReportDTO> response) {
+                        notificationHelper.sendReportNotification(
+                                "Report Submitted",
+                                "Your " + type + " report has been received."
+                        );
+                    }
+                    // ...
+                });
+            }
             }
 
             @Override
