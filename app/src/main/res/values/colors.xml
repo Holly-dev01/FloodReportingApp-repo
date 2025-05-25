@@ -5,4 +5,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray_light">#F5F5F5</color>
     <color name="colorSecondary">#757575</color>
+    <color name="severity_high">#F44336</color>
+    <color name="severity_medium">#FF9800</color>
+    <color name="severity_low">#4CAF50</color>
 </resources>
