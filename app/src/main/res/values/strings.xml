@@ -1,3 +1,32 @@
 <resources>
-    <string name="app_name">floodreportingapp</string>
+    <string name="filter_high">High Severity</string>
+    <string name="filter_medium">Medium Severity</string>
+    <string name="filter_low">Low Severity</string>
+
+    <!-- Report types -->
+    <string-array name="report_types">
+        <item>Flood</item>
+        <item>Blocked Road</item>
+    </string-array>
+
+    <!-- Severity levels -->
+    <string-array name="severity_levels">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+
+    <!-- Notifications -->
+    <string name="notification_channel_name">Flood Reports</string>
+    <string name="notification_channel_description">Notifications for flood reporting app</string>
+
+    <!-- Messages -->
+    <string name="login_success">Login successful!</string>
+    <string name="login_failed">Login failed</string>
+    <string name="report_submitted">Report submitted successfully!</string>
+    <string name="report_failed">Failed to submit report</string>
+    <string name="network_error">Network error occurred</string>
+    <string name="location_permission_required">Location permission is required</string>
+    <string name="biometric_not_available">Biometric authentication not available</string>
+    <string name="action_logout" />
 </resources>
