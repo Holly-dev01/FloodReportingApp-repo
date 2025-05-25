@@ -1,9 +1,13 @@
 package com.example.floodreportingapp;
 
 import android.content.Intent;
+import android.hardware.biometrics.BiometricManager;
+import android.hardware.biometrics.BiometricPrompt;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.floodreportingapp.api.ApiService;
@@ -106,5 +110,22 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void setupBiometric() {
+        BiometricManager biometricManager = BiometricManager.from(this);
+
+        switch (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_WEAK)) {
+            case BiometricManager.BIOMETRIC_SUCCESS:
+                setupBiometricPrompt();
+                btnBiometricLogin.setEnabled(true);
+                break;
+            case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+            case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+            case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                btnBiometricLogin.setEnabled(false);
+                btnBiometricLogin.setText("Biometric not available");
+                break;
+        }
     }
 }
