@@ -184,6 +184,15 @@ private void getCurrentLocation() {
     return;
             }
 
+            call.enqueue(new Callback<FloodReportDTO>() {
+    @Override
+    public void onFailure(Call<FloodReportDTO> call, Throwable t) {
+        runOnUiThread(() ->
+                Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show()
+        );
+    }
+});
+
     private void clearForm() {
         etDescription.setText("");
         spinnerType.setSelection(0);
