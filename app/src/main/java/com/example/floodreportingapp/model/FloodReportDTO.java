@@ -14,6 +14,19 @@ public class FloodReportDTO {
 
     public FloodReportDTO() {}
 
+    public FloodReportDTO(String id, String type, String description, double latitude,
+                          double longitude, Date timestamp, String deviceId, String severity) {
+        this.id = id;
+        this.type = type;
+        this.description = description;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.timestamp = timestamp;
+        this.deviceId = deviceId;
+        this.severity = severity;
+    }
+
+
     // Getters and Setters
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
