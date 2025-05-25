@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/filter_all" android:title="All" />
-    <item android:id="@+id/filter_flood" android:title="Floods" />
-    <item android:id="@+id/filter_blocked_road" android:title="Blocked Roads" />
+
+    <item
+        android:id="@+id/filter_menu"
+        android:title="Filter"
+        android:icon="@drawable/ic_filter"
+        app:showAsAction="always">
+
+        <menu>
+            <item
+                android:id="@+id/filter_all"
+                android:title="All Reports" />
+
+            <item
+                android:id="@+id/filter_flood"
+                android:title="Flood Reports" />
+
+            <item
+                android:id="@+id/filter_blocked_road"
+                android:title="Blocked Road Reports" />
+
+            <group android:title="By Severity">
+                <item
+                    android:id="@+id/filter_low"
+                    android:title="Low Severity" />
+
+                <item
+                    android:id="@+id/filter_medium"
+                    android:title="Medium Severity" />
+
+                <item
+                    android:id="@+id/filter_high"
+                    android:title="High Severity" />
+            </group>
+        </menu>
+    </item>
+
 </menu>
