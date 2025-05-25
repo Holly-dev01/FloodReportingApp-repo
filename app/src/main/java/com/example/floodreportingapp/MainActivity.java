@@ -173,12 +173,16 @@ private void getCurrentLocation() {
        }
     }
 
-private void logout() {
+    private void logout() {
     prefsHelper.logout();
     startActivity(new Intent(this, LoginActivity.class));
     finish();
-}
+    }
 
+    if (description.isEmpty()) {
+        etDescription.setError("Description required");
+    return;
+            }
 
     private void clearForm() {
         etDescription.setText("");
