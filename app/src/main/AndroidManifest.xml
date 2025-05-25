@@ -35,10 +35,17 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Google Maps API Key -->
+        </activity>
+        <!-- Google Maps API Key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCjNHiVicZUXXWZpR2Mf1iXEjMw1mKnTWU" />
+<!--        notifications-->
+        <receiver android:name=".NotificationReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".MapsActivity"
