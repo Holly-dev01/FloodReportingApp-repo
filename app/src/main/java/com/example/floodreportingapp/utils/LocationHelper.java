@@ -11,6 +11,7 @@ import androidx.core.app.ActivityCompat;
 public class LocationHelper {
     private Context context;
     private LocationManager locationManager;
+    private LocationListener locationListener;
 
     public LocationHelper(Context context) {
         this.context = context;
@@ -31,7 +32,7 @@ public class LocationHelper {
             return;
         }
 
-        LocationListener locationListener = new LocationListener() {
+        locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
                 callback.onLocationReceived(location.getLatitude(), location.getLongitude());
@@ -51,15 +52,34 @@ public class LocationHelper {
         };
 
         try {
+            // Try GPS first
             if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-            } else if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+                locationManager.requestLocationUpdates(
+                        LocationManager.GPS_PROVIDER,
+                        0,
+                        0,
+                        locationListener
+                );
+            }
+            // Fallback to network provider
+            else if (locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+                locationManager.requestLocationUpdates(
+                        LocationManager.NETWORK_PROVIDER,
+                        0,
+                        0,
+                        locationListener
+                );
             } else {
                 callback.onLocationError("No location providers available");
             }
         } catch (Exception e) {
             callback.onLocationError("Error getting location: " + e.getMessage());
+        }
+    }
+
+    public void stopLocationUpdates() {
+        if (locationManager != null && locationListener != null) {
+            locationManager.removeUpdates(locationListener);
         }
     }
 }
