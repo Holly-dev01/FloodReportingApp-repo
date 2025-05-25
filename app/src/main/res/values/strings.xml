@@ -1,10 +1,4 @@
 <resources>
-    <!-- Severity levels -->
-    <string-array name="severity_levels">
-        <item>Low</item>
-        <item>Medium</item>
-        <item>High</item>
-    </string-array>
 
     <!-- Notifications -->
     <string name="notification_channel_name">Flood Reports</string>
