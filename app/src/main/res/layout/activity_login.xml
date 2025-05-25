@@ -6,6 +6,32 @@
     android:padding="24dp"
     android:gravity="center">
 
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_flood"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="App Logo" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Flood Reporting System"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Admin Login"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginBottom="32dp"
+        android:textColor="@color/colorSecondary" />
+
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,14 +50,15 @@
                 android:layout_marginBottom="16dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Username"
-                android:inputType="text"
-                android:drawableStart="@drawable/ic_person"
-                android:drawablePadding="12dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:inputType="text"
+                    android:drawableStart="@drawable/ic_person"
+                    android:drawablePadding="12dp" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -62,4 +89,20 @@
                 android:padding="12dp"
                 android:layout_marginBottom="16dp"
                 style="@style/Widget.MaterialComponents.Button" />
+
+            <Button
+                android:id="@+id/btnBiometricLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login with Fingerprint"
+                android:textColor="@color/colorPrimary"
+                android:background="@android:color/transparent"
+                android:drawableStart="@drawable/ic_fingerprint"
+                android:drawablePadding="8dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
 </LinearLayout>
