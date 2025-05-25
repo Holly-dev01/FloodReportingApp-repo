@@ -7,6 +7,12 @@ public class AuthResponseDTO {
 
     public AuthResponseDTO() {}
 
+    public AuthResponseDTO(boolean success, String token, String message) {
+        this.success = success;
+        this.token = token;
+        this.message = message;
+    }
+
     public boolean isSuccess() { return success; }
     public void setSuccess(boolean success) { this.success = success; }
 
