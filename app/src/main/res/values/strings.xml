@@ -14,4 +14,5 @@
     <string name="biometric_not_available">Biometric authentication not available</string>
     <string name="action_logout" />
     <string name="app_name">floodreportingapp</string>
+    <string name="login_failed">Login failed</string>
 </resources>
