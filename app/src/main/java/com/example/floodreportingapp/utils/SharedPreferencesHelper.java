@@ -36,6 +36,12 @@ public class SharedPreferencesHelper {
         return preferences.getString(KEY_AUTH_TOKEN, null);
     }
 
+    public void saveCredentials(String username, String password) {
+        editor.putString("username", username);
+        editor.putString("password", password);
+        editor.apply();
+    }
+
     public String getDeviceId() {
         String deviceId = preferences.getString(KEY_DEVICE_ID, null);
         if (deviceId == null) {
