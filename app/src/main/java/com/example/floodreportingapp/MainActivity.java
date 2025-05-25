@@ -193,6 +193,13 @@ private void getCurrentLocation() {
     }
 });
 
+        btnSubmitReport.setEnabled(false);
+        btnSubmitReport.setText("Submitting...");
+
+// After response:
+       btnSubmitReport.setEnabled(true);
+       btnSubmitReport.setText("Submit Report");
+
     private void clearForm() {
         etDescription.setText("");
         spinnerType.setSelection(0);
